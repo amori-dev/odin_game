@@ -17,6 +17,13 @@ Gun :: struct {
 	texture: rl.Texture2D,
 }
 
+Bullet :: struct {
+    speed: f32,
+    texture: rl.Texture2D,
+    vel: rl.Vector2,
+    pos: rl.Vector2,
+}
+
 main :: proc() {
 	rl.InitWindow(1280, 720, "")
 
@@ -27,9 +34,10 @@ main :: proc() {
 		vel     = {0, 0},
 	}
 
-	gun := Gun {
-		texture = rl.LoadTexture("Assets/Art/gun.png"),
-	}
+    bullet := Bullet {
+        speed = 1000.0,
+        texture = rl.LoadTexture("Assets/Art/bullet.png")
+    }
 
 	cam := rl.Camera2D {
 		offset = {f32(rl.GetScreenWidth() / 2), f32(rl.GetScreenHeight() / 2)},
@@ -85,6 +93,10 @@ main :: proc() {
 
         // Set the origin to the center of the texture
         player_origin := rl.Vector2{f32(player.texture.width) * 0.5, f32(player.texture.height) * 0.5}
+
+        if (rl.IsMouseButtonPressed(.LEFT)) {
+            // TODO: shoot
+        }
 
         rl.DrawTexturePro(player.texture, srcRect, dstRect, player_origin, angle_in_degrees, rl.WHITE)
 
