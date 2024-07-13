@@ -1,0 +1,4 @@
+1. Game Loop + Screen {complete}
+2. Render player and gun {complete}
+3. player movement {complete}   
+4. make player rotate towards mouse cursor {TODO}
